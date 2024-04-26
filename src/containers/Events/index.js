@@ -16,7 +16,8 @@ const EventList = () => {
   const filteredEvents = (
     (!type
       ? data?.events
-      : data?.events) || []
+      // adding filter to have the corresponding photo depending on the type
+      : data?.events.filter(event => event.type === type)) || []
   ).filter((event, index) => {
     if (
       (currentPage - 1) * PER_PAGE <= index &&
@@ -27,6 +28,8 @@ const EventList = () => {
     return false;
   });
   const changeType = (evtType) => {
+    // verification of the value received
+    console.log("selected value :", evtType);
     setCurrentPage(1);
     setType(evtType);
   };
@@ -45,19 +48,23 @@ const EventList = () => {
             onChange={(value) => (value ? changeType(value) : changeType(null))}
           />
           <div id="events" className="ListContainer">
-            {filteredEvents.map((event) => (
-              <Modal key={event.id} Content={<ModalEvent event={event} />}>
-                {({ setIsOpened }) => (
-                  <EventCard
-                    onClick={() => setIsOpened(true)}
-                    imageSrc={event.cover}
-                    title={event.title}
-                    date={new Date(event.date)}
-                    label={event.type}
-                  />
-                )}
-              </Modal>
-            ))}
+            {filteredEvents.map((event) => {
+              // added a console.log to check which photos are recovered by filtering
+              console.log("selected photos:", event)
+              return (
+                <Modal key={event.id} Content={<ModalEvent event={event} />}>
+                  {({ setIsOpened }) => (
+                    <EventCard
+                      onClick={() => setIsOpened(true)}
+                      imageSrc={event.cover}
+                      title={event.title}
+                      date={new Date(event.date)}
+                      label={event.type}
+                    />
+                  )}
+                </Modal>
+              )
+            })}
           </div>
           <div className="Pagination">
             {[...Array(pageNumber || 0)].map((_, n) => (

@@ -16,10 +16,13 @@ const Select = ({
   const [value, setValue] = useState();
   const [collapsed, setCollapsed] = useState(true);
   const changeValue = (newValue) => {
-    onChange();
+    // adding newValue to onChange to return the new value
+    onChange(newValue);
     setValue(newValue);
     setCollapsed(newValue);
   };
+
+  
   return (
     <div className={`SelectContainer ${type}`} data-testid="select-testid">
       {label && <div className="label">{label}</div>}
@@ -99,3 +102,4 @@ Select.defaultProps = {
 }
 
 export default Select;
+
