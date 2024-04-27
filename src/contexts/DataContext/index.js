@@ -15,7 +15,6 @@ export const api = {
     return json.json();
   },
 };
-
 export const DataProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
@@ -47,7 +46,6 @@ export const DataProvider = ({ children }) => {
 DataProvider.propTypes = {
   children: PropTypes.node.isRequired,
 }
-
 export const useData = () => useContext(DataContext);
 
 export default DataContext;
