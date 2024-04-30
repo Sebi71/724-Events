@@ -5,7 +5,7 @@ import Select from "../../components/Select";
 import Button, { BUTTON_TYPES } from "../../components/Button";
 
 // modification of the duration so that the test has time to be executed
-const mockContactApi = () => new Promise((resolve) => { setTimeout(resolve, 900); })
+const mockContactApi = () => new Promise((resolve) => { setTimeout(resolve, 1000); })
 
 const Form = ({ onSuccess, onError }) => {
   const [sending, setSending] = useState(false);

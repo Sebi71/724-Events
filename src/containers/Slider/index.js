@@ -51,22 +51,22 @@ const Slider = () => {
           </div>
         </div>
       ))}
-        <div className="SlideCard__paginationContainer">
-          <div className="SlideCard__pagination">
-            {byDateDesc?.map((eventBullet, radioIdx) => (
-              <input
-              // changing the key to a unique key
-                key={`${eventBullet.title}`}
-                type="radio"
-                name="radio-button"
-                data-testid="radio-button"
-                checked={index === radioIdx}
-                // added onchange to change the index value and display corresponding slide
-                onChange={() => setIndex(radioIdx)}
-              />
-            ))}
-          </div>
+      <div className="SlideCard__paginationContainer">
+        <div className="SlideCard__pagination">
+          {byDateDesc?.map((eventBullet, radioIdx) => (
+            <input
+            // changing the key to a unique key
+              key={`${eventBullet.title}`}
+              type="radio"
+              name="radio-button"
+              data-testid="radio-button"
+              checked={index === radioIdx}
+              // added onchange to change the index value and display corresponding slide
+              onChange={() => setIndex(radioIdx)}
+            />
+          ))}
         </div>
+      </div>
     </div>
   );
 };

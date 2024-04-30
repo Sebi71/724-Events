@@ -45,10 +45,12 @@ describe("When Events is created", () => {
         <Events />
       </DataProvider>
     );
+    // added All to find all elements containing "Avril"
     await screen.findAllByText("avril");
   });
   describe("and an error occured", () => {
     it("an error message is displayed", async () => {
+      // adding the error message to the mock which returns a rejection of the promise, in order to be found
       api.loadData = jest.fn().mockRejectedValue("An error occured");
       render(
         <DataProvider>
