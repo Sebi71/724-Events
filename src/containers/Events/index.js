@@ -14,18 +14,14 @@ const EventList = () => {
   const [type, setType] = useState();
   const [currentPage, setCurrentPage] = useState(1);
 
-  // added a constant to have last photo posted first
   const byDateDesc = data?.events.sort((evtA, evtB) =>
     new Date(evtA.date) > new Date(evtB.date) ? -1 : 1
   );
   const filteredEvents = (
     (!type
       ? byDateDesc
-      // adding filter to have the corresponding photo depending on the type
       : byDateDesc.filter(event => event.type === type)) || []
     ).filter((event, index) => {
-    // added a console.log to check which photos are recovered by filtering
-    // console.log("selected photos:", event);
     if (
       (currentPage - 1) * PER_PAGE <= index &&
       PER_PAGE * currentPage > index
@@ -35,8 +31,6 @@ const EventList = () => {
     return false;
   });
   const changeType = (evtType) => {
-    // verification of the value received
-    // console.log("selected value :", evtType);
     setCurrentPage(1);
     setType(evtType);
   };

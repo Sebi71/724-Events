@@ -36,6 +36,7 @@ export const DataProvider = ({ children }) => {
       value={{
         data,
         error,
+        last: data && data.events ? data.events.slice().sort((evtA, evtB) => new Date(evtB.date) - new Date(evtA.date))[0] : null
       }}
     >
       {children}
